@@ -36,7 +36,5 @@ class StatisticsServices(AppService):
             group_by(Sales.id, Products.price)
         total_sale: int = 0
         for record in query:
-            print(record.quantity)
-            print(record.unit_price)
             total_sale = total_sale + (record.quantity * record.unit_price)
         return {"total_sale": total_sale, "date": specific_month}
