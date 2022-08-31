@@ -20,11 +20,10 @@ class StatisticsServices(AppService):
             Products.price.label("unit_price"),
         ).join(Products).\
             filter(Sales.sale_at == specific_day).\
-            group_by(Sales.id,).\
-            order_by(Sales.id,)
+            group_by(Sales.id, Products.price)
         total_sale: int = 0
         for record in query:
-            total_sale *= record.qty * record.price
+            total_sale = total_sale + (record.quantity * record.unit_price)
         return {"total_sale": total_sale, "date": specific_day}
 
     def total_value_sale_by_month(self, specific_month: date):
@@ -34,9 +33,10 @@ class StatisticsServices(AppService):
             Products.price.label("unit_price"),
         ).join(Products).\
             filter(extract('month', Sales.sale_at) == specific_month.month).\
-            group_by(Sales.id,).\
-            order_by(Sales.id,)
+            group_by(Sales.id, Products.price)
         total_sale: int = 0
         for record in query:
-            total_sale *= record.qty * record.price
+            print(record.quantity)
+            print(record.unit_price)
+            total_sale = total_sale + (record.quantity * record.unit_price)
         return {"total_sale": total_sale, "date": specific_month}
