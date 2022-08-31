@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  nudges:
+  web:
     build: .
     command: uvicorn app.main:app --host 0.0.0.0 --port 3000
     volumes:
