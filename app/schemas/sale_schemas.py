@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 class SaleSchema(BaseModel):
     qty: int
-    product_id: UUID
+    products_id: UUID
     users_id: UUID
 
     class Config:

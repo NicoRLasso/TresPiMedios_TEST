@@ -17,5 +17,6 @@ class Sales(Base):
                 default=uuid.uuid4, nullable=False)
     qty = Column(Integer, nullable=False)
     sale_at = Column(Date, default=datetime.utcnow)
-    products_id = Column(UUID, ForeignKey(Products.id), nullable=False)
-    users_id = Column(UUID, ForeignKey(Users.id), nullable=False)
+    products_id = Column(UUID(as_uuid=True), ForeignKey(
+        Products.id), nullable=False)
+    users_id = Column(UUID(as_uuid=True), ForeignKey(Users.id), nullable=False)

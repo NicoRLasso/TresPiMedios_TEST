@@ -23,7 +23,7 @@ def list_sales(db_session=Depends(db)):
     return sales.lists_sales()
 
 
-@router.post("/", response_model=SaleResponse)
+@router.put("/", response_model=SaleResponse)
 def update_sale(update_sale: SaleUpdate, db_session=Depends(db), api_key=Security(APIKeyHeader(name="Auth"))):
     if is_admin_user(api_key, db_session):
         sales = SaleServices(db_session)

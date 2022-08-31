@@ -15,5 +15,4 @@ class Users(Base):
     name = Column(String(length=30), nullable=False)
     last_name = Column(String(length=30), nullable=False)
     document = Column(String(length=30), nullable=False)
-    roles_id = Column(UUID, ForeignKey(Roles.id), nullable=True,
-                      default="cb1c13be-8a45-482c-9edb-81ad4f6900e3")
+    roles_id = Column(UUID(as_uuid=True), ForeignKey(Roles.id), nullable=False)

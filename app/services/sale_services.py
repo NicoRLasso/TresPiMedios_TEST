@@ -20,8 +20,9 @@ class SaleServices(AppService):
     def update_sale(self, sale_update: SaleUpdate) -> Sales:
         updated_sale: Sales = self.db_session.query(
             Sales).filter(Sales.id == sale_update.id).first()
-        updated_sale.products_id = sale_update.product_id
+        updated_sale.products_id = sale_update.products_id
         updated_sale.qty = sale_update.qty
+        return updated_sale
 
     def lists_sales(self) -> List[Sales]:
         return self.db_session.query(Sales).all()
