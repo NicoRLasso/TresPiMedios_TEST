@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, Security
 from starlette import status
 
 from app.models.users import Users
-from app.services.users_services import UserServices
+from app.services.user_services import UserServices
 from app.schemas.user_schemas import UserResponse, UserSchema, RoleResponse, RoleSchema
 from app.db.database import db
 
