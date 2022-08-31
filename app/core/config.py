@@ -23,7 +23,7 @@ class GlobalConfig(BaseSettings):
 
     DATABASE_URL: Optional[
         PostgresDsn
-    ] = "postgresql://postgres:postgres@localhost:5432/db"
+    ] = "postgresql://postgres:postgres@db:5432/db"
 
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 180
     SECRET_KEY: str = "7b972778f5c13821d65fda077a14933d1aacd3131b1d5994ee38c21f4d617617"
