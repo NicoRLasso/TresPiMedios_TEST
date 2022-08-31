@@ -15,3 +15,5 @@ There is actually a admin user for testing purpose and the id is `3fc73783-8c78-
 There are already 5 products on the system on [products.json](https://github.com/NicoRLasso/TresPiMedios_TEST/blob/master/app/utils/products.json)
 
 There are already 3 roles on the system on [roles.json](https://github.com/NicoRLasso/TresPiMedios_TEST/blob/master/app/utils/roles.json)
+
+Also there is a postman collection with all the required urls [TresPiMedios.postman_collection.json](https://github.com/NicoRLasso/TresPiMedios_TEST/blob/master/TresPiMedios.postman_collection.json)
