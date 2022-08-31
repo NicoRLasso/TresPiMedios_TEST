@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "def305c5-2d82-4ff6-bbb5-fb6a939bd084",
+		"name": "TresPiMedios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13703090"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "create_user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"document\": \"1234\",\n  \"last_name\": \"Jonson\",\n  \"name\": \"Adam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						},
+						"description": "Create a new user by default it's role is everyone to change it go to /api/v1/assign_roles"
+					},
+					"response": []
+				},
+				{
+					"name": "list_users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/users/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						},
+						"description": "List all system users"
+					},
+					"response": []
+				},
+				{
+					"name": "list_roles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/users/roles/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"roles",
+								""
+							]
+						},
+						"description": "List all system users"
+					},
+					"response": []
+				},
+				{
+					"name": "delete_user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/users/?user_id=ba027069-ef86-4238-bf4a-c14f01990e5a",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "ba027069-ef86-4238-bf4a-c14f01990e5a"
+								}
+							]
+						},
+						"description": "Delete a user by the query parameter\n\nuser_id: UUID"
+					},
+					"response": []
+				},
+				{
+					"name": "assign_role_to_user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/users/assign_roles?user_id=c5f488cb-c7934d92-a400-54b2636f91f8&role_id=9c371dfa-2323-4169-8bd1-2ace4160cd78",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"assign_roles"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "c5f488cb-c7934d92-a400-54b2636f91f8"
+								},
+								{
+									"key": "role_id",
+									"value": "9c371dfa-2323-4169-8bd1-2ace4160cd78"
+								}
+							]
+						},
+						"description": "assign a role to a user by the query parameters\n\nuser_id: UUID\n\nrole_id: UUID"
+					},
+					"response": []
+				},
+				{
+					"name": "create_role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/users/roles",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"roles"
+							]
+						},
+						"description": "Create a role"
+					},
+					"response": []
+				}
+			],
+			"description": "All users and roles endpoints"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "create_product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"price\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/products/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								""
+							]
+						},
+						"description": "Create a product"
+					},
+					"response": []
+				},
+				{
+					"name": "list_products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/products/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								""
+							]
+						},
+						"description": "List all system products"
+					},
+					"response": []
+				}
+			],
+			"description": "Products endpoints"
+		},
+		{
+			"name": "Sales",
+			"item": [
+				{
+					"name": "create_sales",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"qty\": 2,\n  \"products_id\": \"479fba0a-baaf-4b46-95a2-83a663817646\",\n  \"users_id\": \"3fc73783-8c78-49c5-879e-d8b4d6780378\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/sales/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"sales",
+								""
+							]
+						},
+						"description": "Create a sale"
+					},
+					"response": []
+				},
+				{
+					"name": "update_sale",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"qty\": 4,\n  \"products_id\": \"479fba0a-baaf-4b46-95a2-83a663817646\",\n  \"users_id\": \"3fc73783-8c78-49c5-879e-d8b4d6780378\",\n  \"id\": \"a8e1e483-49c5-4f8a-bf52-27b67f4972b4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/sales/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"sales",
+								""
+							],
+							"query": [
+								{
+									"key": "Auth",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Update a sale"
+					},
+					"response": []
+				},
+				{
+					"name": "list_sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/sales/",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"sales",
+								""
+							]
+						},
+						"description": "List all system sales"
+					},
+					"response": []
+				},
+				{
+					"name": "delete_sale",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/sales/?sale_uuid=a8e1e483-49c5-4f8a-bf52-27b67f4972b4",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"sales",
+								""
+							],
+							"query": [
+								{
+									"key": "sale_uuid",
+									"value": "a8e1e483-49c5-4f8a-bf52-27b67f4972b4"
+								}
+							]
+						},
+						"description": "Delete a sale by the query parameter\n\nsale_uuid: UUID"
+					},
+					"response": []
+				}
+			],
+			"description": "Sales endpoints"
+		},
+		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "daily_total_sale",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/statistics/daily_total_sale/?date=2022-08-30",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"statistics",
+								"daily_total_sale",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-08-30"
+								}
+							]
+						},
+						"description": "Get the total sale value on a specific day by a query parameter\n\ndate: date"
+					},
+					"response": []
+				},
+				{
+					"name": "daily_total_month",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "3fc73783-8c78-49c5-879e-d8b4d6780378",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://0.0.0.0:3000/api/v1/statistics/monthly_total_sale/?date=2022-08-1",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"statistics",
+								"monthly_total_sale",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-08-1"
+								}
+							]
+						},
+						"description": "Get the total sale value on a specific month by a query parameter\n\ndate: date"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
