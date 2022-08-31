@@ -9,9 +9,9 @@ class ProductServices(AppService):
     def __init__(self, db_session):
         super().__init__(db_session)
 
-    def create_product(self, new_product: ProductSchema) -> Products:
+    def create_product(self, new_product_input: ProductSchema) -> Products:
         new_product = Products(
-            **new_product.dict()
+            **new_product_input.dict()
         )
         self.db_session.add(new_product)
         self.db_session.commit()
