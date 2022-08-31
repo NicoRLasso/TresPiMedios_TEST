@@ -48,7 +48,6 @@ def charge_admin_fixtures():
                 last_name="Admin",
                 document="12345678",
                 roles_id="baa38a8a-2b02-4c24-8d32-be7785061414"
-
             )
             db_session.add(new_user)
             db_session.commit()
@@ -59,7 +58,9 @@ def charge_admin_fixtures():
 def is_admin_user(user_id, db_session) -> bool:
     try:
         user = db_session.query(Users).filter(Users.id == user_id).first()
-        if user.roles_id == "baa38a8a-2b02-4c24-8d32-be7785061414":
+        role = db_session.query(Roles).filter(
+            Roles.id == user.roles_id).first()
+        if role.name == "admin":
             return True
         return False
     except Exception as error:
