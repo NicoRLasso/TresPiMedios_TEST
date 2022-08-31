@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from uuid import UUID
 from pydantic import BaseModel
 
@@ -17,4 +17,4 @@ class SaleUpdate(SaleSchema):
 
 
 class SaleResponse(SaleUpdate):
-    sale_at: datetime
+    sale_at: date
