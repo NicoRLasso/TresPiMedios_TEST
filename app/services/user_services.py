@@ -1,6 +1,6 @@
+from http.client import HTTPException
 from typing import List
 from uuid import UUID
-from sqlalchemy.orm import Session
 from app.models.roles import Roles
 
 from app.models.users import Users
@@ -15,10 +15,12 @@ class UserServices(AppService):
 
     def create_user(self, new_user_input: UserSchema) -> Users:
         new_user = Users(
-            **new_user_input.dict()
+            **new_user_input.dict(),
+            roles_id="cb1c13be-8a45-482c-9edb-81ad4f6900e3"
         )
         self.db_session.add(new_user)
         self.db_session.commit()
+        return new_user
 
     def create_role(self, new_role_input: RoleSchema) -> Roles:
         new_role = Roles(
@@ -26,12 +28,20 @@ class UserServices(AppService):
         )
         self.db_session.add(new_role)
         self.db_session.commit()
+        return new_role
 
     def assign_role_to_user(self, user_id: UUID, role_id: UUID) -> Users:
-        user = self.db_session.query(Users).filter(Users.id == user_id).first()
-        user.role_id = role_id
-        self.db_session.commit()
-        return user
+        try:
+            user = self.db_session.query(Users).filter(
+                Users.id == user_id).first()
+            user.roles_id = role_id
+            self.db_session.commit()
+            return user
+        except Exception:
+            raise HTTPException(
+                status_code=403,
+                detail="Not found"
+            )
 
     def lists_user(self) -> List[Users]:
         return self.db_session.query(Users).all()

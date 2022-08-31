@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, Security, HTTPException
 from fastapi.security import APIKeyHeader
 
 from app.services.user_services import UserServices
-from app.schemas.user_schemas import UserResponse, UserSchema, RoleResponse, RoleSchema
+from app.schemas.user_schemas import UserResponse, UserRoleResponse, UserSchema, RoleResponse, RoleSchema
 from app.db.database import db
 from app.utils import is_admin_user
 
@@ -23,7 +23,7 @@ def create_user(new_user: UserSchema, db_session=Depends(db), api_key=Security(A
         )
 
 
-@ router.post("/roles", response_model=RoleResponse)
+@ router.post("/assign_roles", response_model=UserRoleResponse)
 def assign_role_to_user(user_id: UUID, role_id: UUID, db_session=Depends(db), api_key=Security(APIKeyHeader(name="Auth"))):
     if is_admin_user(api_key, db_session):
         user = UserServices(db_session)
@@ -36,7 +36,7 @@ def assign_role_to_user(user_id: UUID, role_id: UUID, db_session=Depends(db), ap
 
 
 @ router.post("/roles", response_model=RoleResponse)
-def create_roles(new_role: RoleResponse, db_session=Depends(db), api_key=Security(APIKeyHeader(name="Auth"))):
+def create_roles(new_role: RoleSchema, db_session=Depends(db), api_key=Security(APIKeyHeader(name="Auth"))):
     if is_admin_user(api_key, db_session):
         user = UserServices(db_session)
         return user.create_role(new_role)
@@ -59,7 +59,7 @@ def list_users(db_session=Depends(db), api_key=Security(APIKeyHeader(name="Auth"
         )
 
 
-@ router.get("/roles", response_model=List[RoleResponse], api_key=Security(APIKeyHeader(name="Auth")))
+@ router.get("/roles", response_model=List[RoleResponse])
 def list_roles(db_session=Depends(db), api_key=Security(APIKeyHeader(name="Auth"))):
     if is_admin_user(api_key, db_session):
         user = UserServices(db_session)

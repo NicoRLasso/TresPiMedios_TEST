@@ -15,6 +15,10 @@ class UserResponse(UserSchema):
     id: UUID
 
 
+class UserRoleResponse(UserResponse):
+    roles_id: UUID
+
+
 class RoleSchema(BaseModel):
     name: str
 
