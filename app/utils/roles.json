@@ -1,0 +1,14 @@
+[
+  {
+    "id": "baa38a8a-2b02-4c24-8d32-be7785061414",
+    "name": "admin"
+  },
+  {
+    "id": "9c371dfa-2323-4169-8bd1-2ace4160cd78",
+    "name": "employee"
+  },
+  {
+    "id": "cb1c13be-8a45-482c-9edb-81ad4f6900e3",
+    "name": "everyone"
+  }
+]
